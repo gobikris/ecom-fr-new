@@ -94,11 +94,17 @@ export default function Cart() {
   return (
     <div>
       <div className="container">
+      <i class="fa size fa-arrow-left mt-5 hand" onClick={()=>navigate("/shop")} aria-hidden="true"></i>
         <div className="row">
-          <h1 className="text-center mt-5 bg-warning rounded-pill ">
-            Your Cart
+        <div className="d-flex justify-content-center">
+        
+          <h1 className="text-center  bg-warning rounded-pill p-2">
+            
+            Your Cart <span className="text-danger">({quantity})</span>
           </h1>
+          </div>
           <div className="col-lg-7 col-md-12 col-12 mx-auto mt-3">
+            
             {product.map((c, index) => {
               const { img, _id, name, quantity, price, size } = c;
               return (
@@ -134,13 +140,13 @@ export default function Cart() {
                           <p className="fw-bold text-danger">
                             Size: <small className="text-success">{size}</small>
                           </p>
-                          <p className="card-text">
+                          
                             <i
                               className="fa fa-trash fa-2x hands"
                               aria-hidden="true"
                               onClick={handleRemove}
                             ></i>
-                          </p>
+                         
                         </div>
                       </div>
                     </div>

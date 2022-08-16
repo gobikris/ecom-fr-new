@@ -14,13 +14,13 @@ export default function MyOrders() {
   // navigate to page
   const navigate = useNavigate();
 
-  // user details state management
+  // user state 
   const [myOrders, setMyOrders] = useState([]);
 
   // Search orders
   const [query, setQuery] = useState("");
 
-  // Initial Loading Page
+  //  Loading 
   const [isLoading, setIsLoading] = useState(true);
 
   // get userById from authToken
@@ -39,7 +39,7 @@ export default function MyOrders() {
   let a = parseJwt(authToken);
   let userId = a._id;
 
-  // get userById Orders
+  // api
   const getUserById = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/orders/userId/${userId}`);
@@ -50,7 +50,7 @@ export default function MyOrders() {
     }
   };
 
-  // Call function useEffect
+  // useEffect
   useEffect(() => {
     getUserById();
   }, []);
@@ -58,10 +58,13 @@ export default function MyOrders() {
   return (
     <div className="">
       <div className="container mt-4">
-        
         <h1 className="text-center text-primary fw-bold mb-4">My Orders</h1>
         <div className="d-flex gap-5 justify-content-center mb-2 ">
-        <i className="fa fa-2x fa-arrow-left hand mt-2" aria-hidden="true" onClick={()=>navigate("/")}></i>
+          <i
+            className="fa fa-2x fa-arrow-left hand mt-2"
+            aria-hidden="true"
+            onClick={() => navigate("/")}
+          ></i>
 
           <input
             type="text"
@@ -69,55 +72,88 @@ export default function MyOrders() {
             placeholder="Search Order"
             onChange={(event) => setQuery(event.target.value)}
           />
-          <p className="text-center text-danger fw-bold mx-auto">
-           
-          </p>
+          <p className="text-center text-danger fw-bold mx-auto"></p>
         </div>
-        {/* my orders table */}
+        {/* My orders Card */}
         <div className="row ">
-          {myOrders.filter((g) => g._id.includes(query)).map((g, index) => {
-            const  { _id, date, time, total,status } = g 
+          {isLoading && (
+            <div className="mt-5">
+              <div className="row mt-5">
+                <div className="col text-center mt-5">
+                  <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-warning" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-info" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow text-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
-            return (
-              <>
-                <div className="col-lg-4 col-md-6 mt-5">
-                  <div
-                    className="card border-0 shadow-lg rounded-4 cur"
-                    style={{ width: "18rem" }}
-                    onClick={() => navigate("/userOrderInfo/" + g._id)}
-                  >
-                    <div className="card-body  rounded-4">
-                      <h5 className="card-title bg-success text-light rounded-pill text-center">
-                        Orders{" "}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                          {index + 1}
-                          <span class="visually-hidden">unread messages</span>
-                        </span>
-                      </h5>
-                      <hr />
-                      <div className="text-start">
-                        <p className="card-text fw-bold">
-                          Id:- <span>{_id}</span>
-                        </p>
-                        <p className="card-text fw-bold">
-                          Date :- <span>{date}</span>
-                        </p>
-                        <p className="card-text fw-bold">
-                          Time :- <span>{time}</span>
-                        </p>
-                        <p className="card-text fw-bold">
-                         Amount Paid :- <span>{total}</span>
-                        </p>
-                        <p className="card-text fw-bold">
-                         Status :- <span>{status}</span>
-                        </p>
+          {myOrders
+            .filter((g) => g._id.includes(query))
+            .map((g, index) => {
+              const { _id, date, time, total, status } = g;
+
+              return (
+                <>
+                  <div className="col-lg-4 col-md-6 mt-5">
+                    <div
+                      className="card order hand border-0 shadow-lg rounded-4 cur"
+                      style={{ width: "18rem" }}
+                      onClick={() => navigate("/MyOrderInfo/" + g._id)}
+                    >
+                      <div className="card-body  rounded-4">
+                        <h5 className="card-title bg-success text-light rounded-pill text-center">
+                          Orders{" "}
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {index + 1}
+                            <span class="visually-hidden">unread messages</span>
+                          </span>
+                        </h5>
+                        <hr />
+                        <div className="text-start">
+                          <p className="card-text fw-bold">
+                            Id:- <span>{_id}</span>
+                          </p>
+                          <p className="card-text fw-bold">
+                            Date :- <span>{date}</span>
+                          </p>
+                          <p className="card-text fw-bold">
+                            Time :- <span>{time}</span>
+                          </p>
+                          <p className="card-text fw-bold">
+                            Amount Paid :- <span>{total}</span>
+                          </p>
+                          <p className="card-text fw-bold">
+                            Status :- <span>{status}</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
-            );
-          })}
+                </>
+              );
+            })}
         </div>
       </div>
     </div>
@@ -145,53 +181,56 @@ export function UserOrdersInfo() {
     }
   };
 
-  // useEffect use refresh data
+  // useEffect 
   useEffect(() => {
     getOrderInfo();
   }, [id]);
 
   return (
     <div className="container">
-      {isLoading && (
-        <div className="mt-5">
-          <div className="row mt-5">
-            <div className="col text-center mt-5">
-          <div class="spinner-grow text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-secondary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-success" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-danger" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-warning" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-info" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-light" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div class="spinner-grow text-dark" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-</div>
-</div>
-        </div>
-      )}
-    
-      
-      
       {/* order info table */}
-      <div className="row table-responsive ">
-      <i class="fa size cur fa-arrow-left mt-5" aria-hidden="true" onClick={()=>navigate("/myorders")}></i>
-      <h1 className="text-center text-primary fw-bold mb-3">Order Info</h1>
-        <table className="text-center table table-hover">
+      <div className="row  ">
+        <i
+          class="fa size cur fa-arrow-left mt-5 text-danger"
+          aria-hidden="true"
+          onClick={() => navigate("/myorders")}
+        ></i>
+        <h1 className="text-center text-primary fw-bold mb-3">Order Info</h1>
+
+        {/* loader */}
+        {isLoading && (
+          <div className="mt-5">
+            <div className="row mt-5 text-center">
+              <div className="col  ">
+                <div class="spinner-grow text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-secondary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-info" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-light" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-dark" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        <table className="text-center table table-hover table-responsive">
           <thead className="bg-dark  text-light">
             <tr>
               <th>Id</th>
@@ -203,6 +242,7 @@ export function UserOrdersInfo() {
               <th>Total</th>
             </tr>
           </thead>
+
           <tbody>
             {orders.product &&
               orders.product.map((p, index) => {
@@ -210,7 +250,7 @@ export function UserOrdersInfo() {
                   <tr>
                     <td>{p._id}</td>
                     <td>
-                    <img src={p.img} style={{ width: "60px" }} alt="" />
+                      <img src={p.img} style={{ width: "60px" }} alt="" />
                     </td>
                     <td>{p.name}</td>
                     <td>{p.size}</td>
@@ -227,4 +267,3 @@ export function UserOrdersInfo() {
   );
 }
 // -------------------------------------
-

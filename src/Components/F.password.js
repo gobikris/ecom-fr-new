@@ -39,7 +39,7 @@ export default function ForgetPassword() {
             onSubmit={async (values) => {
               console.log(values);
               try {
-                await axios.post(`${API_URL}/auth/forget`, values);
+                await axios.post(`${API_URL}/auth/forgot`, values);
                 navigate("/");
                 toast.success("Check Register Email");
               } catch (error) {
@@ -68,7 +68,7 @@ export default function ForgetPassword() {
                   <div className="">
                     <button
                       type="submit"
-                      className="w-100 btn btn-danger rounded-pill p-2 fw-bold"
+                      className="w-50 btn-lg btn btn-danger rounded-pill p-2 fw-bold"
                     >
                       Send
                     </button>

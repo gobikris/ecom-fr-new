@@ -19,13 +19,14 @@ export default function UserList() {
 
   const [find, setFind] = useState("");
 
-  
+  const [isLoading, setIsLoading] = useState(true);
 
   // get users details
   const getUsers = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/users`);
       setUsers(data);
+      setIsLoading(false);
       
     } catch (error) {
       console.log(error.message);
@@ -40,7 +41,7 @@ export default function UserList() {
   const deleteUser = async ({fullname, _id}) => {
     if (window.confirm(`Delete this user ${fullname}`)) {
         try {
-            await axios.delete(`http://localhost:3002/users/${_id}`, {_id});
+            await axios.delete(`${API_URL}/users/${_id}`, {_id});
             toast.success("User Deleted");
             getUsers();
         } catch (error) {
@@ -71,8 +72,8 @@ export default function UserList() {
       
         <div className="row ">
           
-          <table className="text-center table table-hover">
-            <thead className="bg-dark text-light">
+          <table className="text-center table table-hover table-responsive">
+            <thead className="table-success text-dark ">
               <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -83,6 +84,38 @@ export default function UserList() {
               </tr>
             </thead>
             <tbody>
+            {isLoading && (
+        <div className="mt-5">
+          <div className="row mt-5">
+            <div className="col text-center mt-5">
+          <div class="spinner-grow text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-light" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+</div>
+</div>
+        </div>
+      )}
               {users.filter((g) => g.fullname.toLowerCase().includes(find)).map((u, index) => {
                 return (
                   <tr key={index}>
@@ -92,7 +125,7 @@ export default function UserList() {
                     <td>{u._id}</td>
                     <td>{u.date}</td>
                     <td >
-                    <i class="fa fa-2x fa-trash hand text-danger" aria-hidden="true" onClick={()=> deleteUser(u)}></i>
+                    <i class="fa fa-2x fa-trash  hand" aria-hidden="true" onClick={()=> deleteUser(u)}></i>
 
                     </td>
                   </tr>

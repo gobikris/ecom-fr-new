@@ -18,8 +18,8 @@ export default function Ahome() {
   
   return (
     <div className="container my-2 pt-2 mt-3">
-      <h5 className="text-center fw-bold bg-warning p-2 rounded-3 ">DASHBOARD</h5>
-      <div className='d-flex justify-content-end'><button className='btn btn-primary' onClick={SignOut}>SignOut</button></div>
+      <h1 className="text-center fw-bold text-danger rounded-pill p-2 shadow-lg order">DASHBOARD</h1>
+      <div className='d-flex justify-content-end'><button className='btn btn-danger rounded-pill fw-bold' onClick={SignOut}>SignOut</button></div>
       
      
       <div className="row">

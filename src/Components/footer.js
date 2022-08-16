@@ -19,7 +19,8 @@ export default function Footer() {
         {/* Need help */}
         <div className="col shadow">
           <h3>NEED HELP</h3>
-          <Link to="/contact" className="text-decoration-none">Contact Us</Link>
+          {/* <Link to="/contact" className="text-decoration-none">Contact Us</Link> */}
+          <p>info@clothes.in</p>
           <br />
           <Link to="/return" className="text-decoration-none">Return, Refund and Cancellation</Link>
          

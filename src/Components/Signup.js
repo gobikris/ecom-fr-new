@@ -37,10 +37,14 @@ export default function Signup() {
   return (
     <div>
       <div className="container">
+      
         <div className="row justify-content-center mt-5">
+        
           <div className="col-lg-5 col-md-7 mt-3">
+          
             <form  onSubmit={handleSubmit} className="d-flex flex-column shadow-lg p-5 back rounded-5">
               {/* name */}
+              
               <h3 className="text-center mb-4 bg-warning rounded-3 p-2">
                 Create An Account
               </h3>
@@ -82,7 +86,7 @@ export default function Signup() {
                   type="number"
                   name="contact"
                   id="contact"
-                  // value={form.contact}
+                 
                   onChange={setForm}
                   className="form-control text-center border-0 rounded-pill"
                   placeholder="Contact No"
@@ -120,3 +124,4 @@ export default function Signup() {
     </div>
   );
 }
+

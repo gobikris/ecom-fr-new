@@ -1,25 +1,23 @@
 import React from 'react'
-
-// import files
-
-
 import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import { API_URL } from '../auth.service/auth.service';
 import { toast } from 'react-hot-toast';
 
-// reset-password
+
+
+
+
 export default function RPassword() {
-  // navigate to page
+  
   const navigate = useNavigate();
 
   // state management
   const { id, token } = useParams();
 
-  // reset password Schema
+  // reset Password
   const resetSchema = Yup.object().shape({
     password: Yup.string().required("Please enter your password"),
   });
@@ -27,11 +25,11 @@ export default function RPassword() {
   return (
     <div className="container">
       <div className="row justify-content-center mt-5 m-2">
-        <div className="col-sm-4 col-md-6 col-lg-4 rounded-5 shadow-lg p-4 text-center">
-          <h5 className="text-center">Reset your password?</h5>
+        <div className="col-sm-4 col-md-6 col-lg-4 rounded-4 order shadow-lg p-4 text-center">
+          <h5 className="text-center bg-warning rounded-pill fw-bold p-2">RESET PASSWORD </h5>
           <img
-            src="https://i.gifer.com/IPNp.gif"
-            className="w-75 mb-2"
+            src="https://cdn.dribbble.com/users/736081/screenshots/2334152/mail-app-400x300.gif"
+            className="w-75 mb-3 rounded-5 "
             alt=""
           />
           {/* Formik validation */}
@@ -47,7 +45,7 @@ export default function RPassword() {
                   `${API_URL}/auth/reset/${id}/${token}`,
                   values
                 );
-                // navigate("/");
+                navigate("/");
                 toast.success("Password reset successfully");
               } catch (error) {
                 console.log(error.message);
@@ -60,10 +58,10 @@ export default function RPassword() {
                   {/* email */}
                   <div>
                     <Field
-                      className="form-control"
+                      className="form-control rounded-pill p-3 mb-2"
                       type="password"
                       name="password"
-                      placeholder="Enter Your Password"
+                      placeholder="Enter New Password"
                     />
                   </div>
                   {errors.password && touched.password ? (
@@ -75,9 +73,9 @@ export default function RPassword() {
                   <div className="">
                     <button
                       type="submit"
-                      className="w-100 btn btn-outline-danger text-warning fw-bold"
+                      className="w-50 btn btn-danger rounded-pill btn-lg fw-bold"
                     >
-                      Submit
+                      SEND
                     </button>
                   </div>
                 </div>

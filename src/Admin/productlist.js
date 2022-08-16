@@ -15,11 +15,14 @@ export default function ProductList() {
 
     const [productList, setProductList] = useState([]);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     // get all productList
     const getProductList = async () =>{
         try {
             const {data} = await axios.get(`${API_URL}/products`);
             setProductList(data);
+            setIsLoading(false);
            console.log(data);
         } catch (error) {
             console.log(error.message);
@@ -47,6 +50,7 @@ export default function ProductList() {
   return (
     <div>
       <div className="container mt-2">
+        
       <h1 className="text-center text-primary fw-bold mx-auto mb-3">
             Product List
           </h1>
@@ -64,10 +68,43 @@ export default function ProductList() {
           </p>
         </div>
         
-        
+        {isLoading && (
+        <div className="mt-5">
+          <div className="row mt-5">
+            <div className="col text-center mt-5">
+          <div class="spinner-grow text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-light" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+</div>
+</div>
+        </div>
+      )}
      
       <div className="row table-responsive ">
+        
         <table className="text-center table table-hover table-primary ">
+          
           <thead className="">
             <tr>
               <th>Image</th>
@@ -81,7 +118,9 @@ export default function ProductList() {
               <th>Actions</th>
             </tr>
           </thead>
+          
           <tbody className="bg-light">
+            
             {productList
               .filter((g) => g.name.toLowerCase().includes(state))
               .map((p, index) => {
@@ -108,6 +147,7 @@ export default function ProductList() {
                   </tr>
                 );
               })}
+              
           </tbody>
         </table>
       </div>

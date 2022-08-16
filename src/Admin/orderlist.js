@@ -68,24 +68,7 @@ export default function OrderList() {
            
           </p> */}
         </div>
-        {/* orders list */}
-        <div className="row table-responsive">
-          <table className="text-center table-success table table-hover ">
-            <thead className=" ">
-              <tr>
-                <th>S.no</th>
-                <th>Name</th>
-                <th>User Id</th>
-                <th>Address</th>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Amount</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            {isLoading && (
+        {isLoading && (
               <div className="row text-center">
               <div className="col">
               <div className="">
@@ -117,6 +100,24 @@ export default function OrderList() {
                 </div>
               </div>
             )}
+        {/* orders list */}
+        <div className="row table-responsive">
+          <table className="text-center table-success table table-hover ">
+            <thead className=" ">
+              <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>User Id</th>
+                <th>Address</th>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            
             <tbody className="bg-light">
               {users
                 .filter((g) => g.token.card.name.toLowerCase().includes(query))
@@ -359,8 +360,8 @@ export function EditOrderForm({ orders }) {
     <div className="container">
       
       <div className="row justify-content-center m-2 mt-5 mx-auto gap-3">
-        <div className="col-sm-4 col-md-6 col-lg-4 p-3 rounded-5 shadow-lg p-4 mx-auto text-center">
-          <h5 className="text-center bg-warning rounded-3 p-2">Delivery Status</h5>
+        <div className="col-sm-4 col-md-6 col-lg-4 p-3 rounded-3 order shadow-lg p-4 mx-auto text-center">
+          <h5 className="text-center bg-warning rounded-pill p-2 fw-bold">TRACKING</h5>
           <img
             src="https://i.pinimg.com/originals/c0/10/de/c010de3f478611b2c745d78497d0428e.gif"
             className="rounded-5"
@@ -369,7 +370,7 @@ export function EditOrderForm({ orders }) {
           />
           {/* status */}
           <select
-            className="mt-2 form-control"
+            className="mt-3 form-control rounded-pill p-3"
             value={status}
             onChange={(event) => setStatus(event.target.value)}
           >
@@ -381,10 +382,10 @@ export function EditOrderForm({ orders }) {
           </select>
           {/* submit */}
           <button
-            className="btn btn-outline-success fw-bold mt-2 form-control"
+            className="btn btn-outline-success fw-bold mt-3 rounded-pill p-3 form-control "
             onClick={editfood}
           >
-            UPDATE
+            SEND STATUS
           </button>
         </div>
         {/* <div className="col-sm-4 col-md-6 col-lg-6 mx-auto">

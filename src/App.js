@@ -56,7 +56,7 @@ export default function App() {
       {/* <Route path="*" element={<Notfound/>}/> */}
       
       {/* this customers list   */}
-      <Route path="/userOrderInfo/:id" element={<UserOrdersInfo/>}/>
+      <Route path="/MyOrderInfo/:id" element={<UserOrdersInfo/>}/>
 
       {/* forgot and reset password */}
       <Route path="/forgot" element={<FPassword/>}/>

@@ -18,7 +18,7 @@ export default function Navbar() {
   // Sign Out
   const SignOut = ()=>{
     window.localStorage.clear();
-    navigate("/contact");
+    // navigate("/contact");
     toast.success("Sign Out Successfully");
   }
 
@@ -43,20 +43,23 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {/* this is testing */}
+          
 
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5 ">
               <li className="nav-item ">
+                {/* home */}
                 <Link className="fw-bold link text-decoration-none" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
+                {/* shop */}
                 <Link className="fw-bold text-decoration-none" to="/shop">
                   Shop
                 </Link>
               </li>
               <li className="nav-item ">
+                {/* contact */}
                 <Link
                   className="fw-bold text-decoration-none"
                   to="/contact"

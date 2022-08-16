@@ -1,8 +1,9 @@
+import React from 'react';
+import { Link,useNavigate } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
-import Footer from './footer';
 
 export default function Contact() {
+  
 const navigate = useNavigate()
 
   return (
@@ -13,15 +14,34 @@ const navigate = useNavigate()
         <i className="fa fa-2x fa-arrow-left cur" aria-hidden="true" onClick={()=>navigate("/")}></i>
           <div className="d-flex gap-3 justify-content-center">
           
-          <h1 className="text-center">Contact Us</h1>
+          <h1 className="text-center bg-warning p-2 rounded-3 fw-bold">Contact Us</h1>
           </div>
         
         
           <div className="col-lg-5 col-md-12 col-12 mt-4 m-auto">
-
-            <h5 className="mt-2 text-center">LEAVE A MESSAGE</h5>
+          <h1 className="fw-bold text-primary mt-3 "><i class="fa fa-location-arrow" aria-hidden="true"></i> LOCATION</h1>
+          <h4 className="text-dark ">
+            support@clothes.in <br />
+            North steert,  Main <br /> Road (NH 8 - Near Mahadev
+            Hotel) <br />
+            Tamilnadu, India 600001
+          </h4>
+<hr />
+          <h1 className="text-primary mt-3">NEED HELP</h1>
+          {/* <Link to="/contact" className="text-decoration-none">Contact Us</Link> */}
+          <i class="fa fa-2x fa-envelope mb-2" aria-hidden="true"> info@clothes.in</i>  <br />
+          
+          <Link to="/return" className="text-decoration-none text-danger fw-bold">Return, Refund and Cancellation</Link>
+  <hr />         
+           <h1 className="text-primary mt-3">SOCIAL MEDIA</h1>
+           <div className="d-flex  gap-3">
+           <i class="fa fa-2x fa-facebook-official text-primary" aria-hidden="true"></i>
+           <i class="fa fa-2x fa-instagram text-success" aria-hidden="true "></i>
+           <i class="fa fa-2x fa-youtube-play text-danger" aria-hidden="true"></i>
+           </div>
+            {/* <h5 className="mt-2 text-center">LEAVE A MESSAGE</h5>
             <form>
-              {/* name */}
+             
               <div class="form-floating mb-3">
                 <input
                   type="text"
@@ -32,7 +52,7 @@ const navigate = useNavigate()
                 <label for="floatingInput">Your Name</label>
               </div>
 
-              {/* email */}
+          
               <div class="form-floating mb-3">
                 <input
                   type="email"
@@ -43,7 +63,7 @@ const navigate = useNavigate()
                 <label for="floatingInput ">Email Address</label>
               </div>
 
-              {/* subject */}
+              
               <div class="form-floating mb-3">
                 <input
                   type="text"
@@ -54,7 +74,7 @@ const navigate = useNavigate()
                 <label for="floatingInput ">Subject</label>
               </div>
 
-              {/* comments */}
+              
               <div class="form-floating mb-3">
                 <textarea
                   class="form-control"
@@ -68,7 +88,7 @@ const navigate = useNavigate()
             </form>
             <div>
               
-            </div>
+            </div>*/}
           </div>
           <div className="col-lg-5 col-md-12 col-12 mt-4">
             <div className="mt-4">
@@ -79,8 +99,8 @@ const navigate = useNavigate()
               />
             </div>
           </div>
-        </div>
-        <Footer/>
+        </div> 
+        
       </div>
     </div>
   );
