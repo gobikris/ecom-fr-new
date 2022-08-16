@@ -1,0 +1,230 @@
+// import files
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { API_URL } from "../auth.service/auth.service";
+
+// my orders page
+export default function MyOrders() {
+  // authToken
+  const authToken = window.localStorage.getItem("authToken");
+
+  // navigate to page
+  const navigate = useNavigate();
+
+  // user details state management
+  const [myOrders, setMyOrders] = useState([]);
+
+  // Search orders
+  const [query, setQuery] = useState("");
+
+  // Initial Loading Page
+  const [isLoading, setIsLoading] = useState(true);
+
+  // get userById from authToken
+  function parseJwt(token) {
+    var base64Url = token.split(".")[1];
+    var base64 = decodeURIComponent(
+      atob(base64Url)
+        .split("")
+        .map((c) => {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(base64);
+  }
+  let a = parseJwt(authToken);
+  let userId = a._id;
+
+  // get userById Orders
+  const getUserById = async () => {
+    try {
+      const { data } = await axios.get(`${API_URL}/orders/userId/${userId}`);
+      setMyOrders(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // Call function useEffect
+  useEffect(() => {
+    getUserById();
+  }, []);
+
+  return (
+    <div className="">
+      <div className="container mt-4">
+        
+        <h1 className="text-center text-primary fw-bold mb-4">My Orders</h1>
+        <div className="d-flex gap-5 justify-content-center mb-2 ">
+        <i className="fa fa-2x fa-arrow-left hand mt-2" aria-hidden="true" onClick={()=>navigate("/")}></i>
+
+          <input
+            type="text"
+            className="form-control  rounded-pill w-75 p-2  px-4"
+            placeholder="Search Order"
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          <p className="text-center text-danger fw-bold mx-auto">
+           
+          </p>
+        </div>
+        {/* my orders table */}
+        <div className="row ">
+          {myOrders.filter((g) => g._id.includes(query)).map((g, index) => {
+            const  { _id, date, time, total,status } = g 
+
+            return (
+              <>
+                <div className="col-lg-4 col-md-6 mt-5">
+                  <div
+                    className="card border-0 shadow-lg rounded-4 cur"
+                    style={{ width: "18rem" }}
+                    onClick={() => navigate("/userOrderInfo/" + g._id)}
+                  >
+                    <div className="card-body  rounded-4">
+                      <h5 className="card-title bg-success text-light rounded-pill text-center">
+                        Orders{" "}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          {index + 1}
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </h5>
+                      <hr />
+                      <div className="text-start">
+                        <p className="card-text fw-bold">
+                          Id:- <span>{_id}</span>
+                        </p>
+                        <p className="card-text fw-bold">
+                          Date :- <span>{date}</span>
+                        </p>
+                        <p className="card-text fw-bold">
+                          Time :- <span>{time}</span>
+                        </p>
+                        <p className="card-text fw-bold">
+                         Amount Paid :- <span>{total}</span>
+                        </p>
+                        <p className="card-text fw-bold">
+                         Status :- <span>{status}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// order info
+export function UserOrdersInfo() {
+  // navigate to page
+  const navigate = useNavigate();
+
+  // state management
+  const { id } = useParams();
+  const [orders, setOrders] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  // get order info
+  const getOrderInfo = async () => {
+    try {
+      const { data } = await axios.get(`${API_URL}/orders/${id}`);
+      setOrders(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // useEffect use refresh data
+  useEffect(() => {
+    getOrderInfo();
+  }, [id]);
+
+  return (
+    <div className="container">
+      {isLoading && (
+        <div className="mt-5">
+          <div className="row mt-5">
+            <div className="col text-center mt-5">
+          <div class="spinner-grow text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-light" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+</div>
+</div>
+        </div>
+      )}
+    
+      
+      
+      {/* order info table */}
+      <div className="row table-responsive ">
+      <i class="fa size cur fa-arrow-left mt-5" aria-hidden="true" onClick={()=>navigate("/myorders")}></i>
+      <h1 className="text-center text-primary fw-bold mb-3">Order Info</h1>
+        <table className="text-center table table-hover">
+          <thead className="bg-dark  text-light">
+            <tr>
+              <th>Id</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.product &&
+              orders.product.map((p, index) => {
+                return (
+                  <tr>
+                    <td>{p._id}</td>
+                    <td>
+                    <img src={p.img} style={{ width: "60px" }} alt="" />
+                    </td>
+                    <td>{p.name}</td>
+                    <td>{p.size}</td>
+                    <td>{p.price}</td>
+                    <td>{p.quantity}</td>
+                    <td>{p.price * p.quantity}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+// -------------------------------------
+

@@ -1,0 +1,113 @@
+.img{
+  /* background: url("https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"); */
+  height: 90vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top 25% right 0;
+  padding: 0 80px;
+  opacity: 0.8;
+  /* display: flex;
+  align-items: flex-start;
+  justify-content: center; */
+
+}
+body{
+  background: lightyellow;
+  /* background-image: url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhpbmclMjBzdG9yZXxlbnwwfHwwfHw%3D&w=1000&q=80);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* color: blue; */
+  /* background: rgb(239, 223, 223); */
+  /* background: rgb(235, 226, 175); */
+}
+.back,.Signup{
+  background: rgb(194, 230, 243);
+  
+}
+.hand{
+  cursor: pointer;
+  transition: transform .2s;
+}
+.hand:hover {
+  color:red;
+  transform: scale(1.1);
+}
+.cur{
+  cursor: pointer;
+}
+.order{
+  background: rgb(178, 223, 239);
+}
+/* 
+ul > li a{
+  color: #088178;
+/* }* 
+/* ul > li a:hover,
+ul > li a.link
+{
+  color: red;
+}  */
+ul > li a{
+  transition: 0.3s ease;
+  
+} 
+
+
+#navbarSupportedContent > ul > li > a:hover::after
+{
+  content: "";
+  width: 40%;
+  height: 2px;
+  /* background: green; */
+  position: absolute;
+  bottom:-4px;
+  left:20px;
+  background:red;
+
+}
+
+#navbarSupportedContent > ul>li>a{
+  padding: 0 20px;
+  position: relative;
+} 
+
+.ocolor{
+  /* background: rgb(218, 216, 216); */
+  background: rgb(244, 194, 194);
+}
+
+.hands{
+  cursor: pointer;
+  transition: transform .2s;
+}
+.hands:hover {
+  color:rgb(222, 13, 13);
+  transform: scale(1.2);
+}
+
+.pro{
+  width: 300px;
+  height: 250px;
+  object-fit: contain;
+  
+}
+.bg{
+  background-color: transparent;
+}
+.brand{
+  background: #43c9be;
+  /* background: rgb(239, 41, 41); */
+}
+.brand1{
+  color: #43c9be;
+}
+
+.size{
+  font-size: 23px;
+}
+
+.imgfun{
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}

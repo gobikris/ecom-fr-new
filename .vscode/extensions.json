@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "formulahendry.auto-close-tag",
+        "steoates.autoimport",
+        "nucllear.vscode-extension-auto-import",
+        "formulahendry.auto-rename-tag",
+        "bracketpaircolordlw.bracket-pair-color-dlw",
+        "kamikillerto.vscode-colorize",
+        "dsznajder.es7-react-js-snippets",
+        "ecmel.vscode-html-css",
+        "zignd.html-css-class-completion",
+        "xabikos.javascriptsnippets",
+        "burkeholland.simple-react-snippets",
+        "TabNine.tabnine-vscode"
+    ]
+}
