@@ -10,7 +10,8 @@ import Signup from './Components/Signup';
 import CartPage from './Components/CartPage';
 import Ahome from './Admin/A.home';
 import ProductList from './Admin/productlist';
-import { AddFoodList, AddProduct, EditProduct } from './Admin/addproduct';
+import { AddProduct } from './Admin/addproduct';
+
 import UserList from './Admin/users';
 import Admin from './Admin/Admin';
 import Credit from './Components/credit';
@@ -18,7 +19,9 @@ import FPassword from './Components/F.password';
 import RPassword from './Components/R.password';
 import MyOrders, { UserOrdersInfo } from './Components/userorder';
 import Return from './Components/return';
-import OrderList, { EditOrderList, OrderDetails, OrdersInfo } from './Admin/orderlist';
+import OrderList, { EditOrderList, OrdersInfo } from './Admin/orderlist';
+import { EditProduct } from './Admin/EditProduct';
+
 
 
 export default function App() {
@@ -66,7 +69,7 @@ export default function App() {
       <Route path="/orders" element={<OrderList />} />
       <Route path="/orders/:id" element={<OrdersInfo />} />
       <Route path="/editOrderList/edit/:id" element={<EditOrderList />} />
-
+      
 
       </Routes>
 

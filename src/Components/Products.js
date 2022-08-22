@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate} from "react-router-dom";
-
+import { Link, useNavigate} from "react-router-dom";
 import { API_URL } from "../auth.service/auth.service";
-import Navbar from "./Navbar";
+import InfoNav from "./InfoNav";
 
-// this is the map for all products
+
+
+
+
 
 export default function Products() {
+
+  // access 
+  const authToken = window.localStorage.getItem("authToken");
+
+  // search state
   const [state,setState] = useState("");
+
+  // api state
   const [list, setList] = useState([]);
+
+  // loader state
   const [isLoading, setIsLoading] = useState(true);
+
+  // navigation state
   const navigate = useNavigate();
+
+  // api call
   const getProducts = async () => {
     
     try {
-      const authToken = window.localStorage.getItem("authToken");
+      
       const { data } = await axios.get(`${API_URL}/products`,{
           headers: { Authorization: `Bearer${authToken}`}
       });
@@ -26,7 +41,7 @@ export default function Products() {
       console.log(error.message);
     }
   };
-
+//  useEffect
   useEffect(() => {
     getProducts();
   }, []);
@@ -34,7 +49,7 @@ export default function Products() {
 
   return (
     <div className="container-fluid">
-      <Navbar />
+      <InfoNav/>
       <div className="d-flex justify-content-between mx-3 mt-4">
         <input
           type="text"
@@ -55,6 +70,8 @@ export default function Products() {
         <p className=" fw-bold mb-4">All Product</p>
         {isLoading && (
           <div className="text-center mt-5">
+
+            {/* loader */}
             <div class="spinner-grow text-primary" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -81,13 +98,13 @@ export default function Products() {
             </div>
           </div>
         )}
-        {list.filter((g)=>g.name.toLowerCase().includes(state)).map((p)=>{
+        {list.map && list.filter((g)=>g.name.toLowerCase().includes(state)).map((p)=>{
           const {name,img,price,_id} = p
           return (
             <>
            
               <div className="col-lg-4 mb-4 ">
-                <div className="card border-0 text-center  hand order rounded-3 shadow mt-2 mx-auto" style={{ width: "18rem" }}>
+                <div className="card border-0 text-center  hand  rounded-3 shadow-lg  mt-2 mx-auto" style={{ width: "18rem" }}>
                 <img src={img} className="img-fluid pro" alt={name} onClick={(()=> navigate("/shop/"+_id))}/>
                   <div className="card-body">
                     <h5 className="card-title">{name}</h5>

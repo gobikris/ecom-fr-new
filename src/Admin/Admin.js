@@ -106,6 +106,7 @@ export default function Admin() {
                   {/* button */}
                   <div className="">
                     <button
+                      onClick={()=>navigate()}
                       type="submit"
                       data-bs-dismiss="modal"
                       aria-label="Close"

@@ -1,26 +1,32 @@
 import React from "react";
-
 import axios from "axios";
-
 import { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
 import { toast } from "react-hot-toast"
 import { API_URL } from "../auth.service/auth.service";
+
 
 
 // All user List
 export default function UserList() {
   
+  // access
+  const adminToken = window.localStorage.getItem("AdminToken");
+  const alogin = <h1 className="text-center fw-bold mt-5 text-danger">"Access Denied"</h1>
+
+
   const navigate = useNavigate();
-  // user details state management
+
+  // users state 
   const [users, setUsers] = useState([]);
 
+  // search state
   const [find, setFind] = useState("");
 
+  // loader state
   const [isLoading, setIsLoading] = useState(true);
 
+ 
   // get users details
   const getUsers = async () => {
     try {
@@ -42,7 +48,7 @@ export default function UserList() {
     if (window.confirm(`Delete this user ${fullname}`)) {
         try {
             await axios.delete(`${API_URL}/users/${_id}`, {_id});
-            toast.success("User Deleted");
+            toast.success(`${fullname} Deleted `);
             getUsers();
         } catch (error) {
             console.log(error.message);
@@ -69,12 +75,14 @@ export default function UserList() {
            
           </p>
         </div>
-      
-        <div className="row ">
+
+      {adminToken && (
+        <div className="row table-responsive">
           
-          <table className="text-center table table-hover table-responsive">
+          <table className="text-center table table-hover ">
             <thead className="table-success text-dark ">
               <tr>
+                <th>S.No</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact</th>
@@ -88,6 +96,7 @@ export default function UserList() {
         <div className="mt-5">
           <div className="row mt-5">
             <div className="col text-center mt-5">
+              {/* loader */}
           <div class="spinner-grow text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
@@ -119,6 +128,7 @@ export default function UserList() {
               {users.filter((g) => g.fullname.toLowerCase().includes(find)).map((u, index) => {
                 return (
                   <tr key={index}>
+                    <td>{index+1}</td>
                     <td>{u.fullname}</td>
                     <td>{u.email}</td>
                     <td>{u.contact}</td>
@@ -134,7 +144,8 @@ export default function UserList() {
             </tbody>
           </table> 
           
-        </div>
+        </div>)}
+        {!adminToken && alogin}
       </div>
     </div>
   );

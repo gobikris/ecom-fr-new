@@ -7,18 +7,29 @@ import { API_URL } from './../auth.service/auth.service';
 
 import { toast} from 'react-hot-toast';
 
+
 // order List function
 export default function OrderList() {
-  // authToken
+  
+  // access 
+  const adminToken = window.localStorage.getItem("AdminToken");
+  const alogin = <h1 className="text-center fw-bold mt-5 text-danger">"Access Denied"</h1>
+  
+  // auth
   const authToken = window.localStorage.getItem("authToken");
-  // navigate to page
+  
   const navigate = useNavigate();
-  // user details state management
+
+  // api state
   const [users, setUsers] = useState([]);
+
+  // loader state
   const [isLoading, setIsLoading] = useState(true);
+
+  // search state
   const [query, setQuery] = useState("");
 
-  // get users details and api call
+  // getUsers Api call
   const getUsers = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/orders`, {
@@ -33,7 +44,9 @@ export default function OrderList() {
     }
   };
 
+
   // delete user
+
   const deleteOrder = async ({ _id }) => {
     if (window.confirm(`Delete this order ?`)) {
       try {
@@ -46,7 +59,8 @@ export default function OrderList() {
     }
   };
 
-  // useEffect use refresh data
+  // useEffect 
+
   useEffect(() => {
     getUsers();
   }, []);
@@ -100,8 +114,11 @@ export default function OrderList() {
                 </div>
               </div>
             )}
+
         {/* orders list */}
+
         <div className="row table-responsive">
+          {adminToken &&(
           <table className="text-center table-success table table-hover ">
             <thead className=" ">
               <tr>
@@ -140,6 +157,7 @@ export default function OrderList() {
                       <td className="text-danger fw-bold">{u.status}</td>
                       <td>{u.total}</td>
                       <td className="d-flex flex-column gap-2">
+
                         {/* order edit */}
                        
                          <i class="fa size fa-pencil hand" aria-hidden="true"  onClick={() =>
@@ -159,7 +177,8 @@ export default function OrderList() {
                   );
                 })}
             </tbody>
-          </table>
+          </table>)}
+          {!adminToken && alogin}
         </div>
       </div>
     </div>
@@ -168,7 +187,7 @@ export default function OrderList() {
 
 // user individual orders Information
 export function OrdersInfo() {
-  // navigate to page
+  
   const navigate = useNavigate();
 
   // state management
@@ -176,7 +195,7 @@ export function OrdersInfo() {
   const [orders, setOrders] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // get order details and api call
+  // get order
   const getOrderInfo = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/orders/${id}`);
@@ -187,7 +206,7 @@ export function OrdersInfo() {
     }
   };
 
-  // useEffect use refresh data
+  // useEffect 
   useEffect(() => {
     getOrderInfo();
   }, [id]);
@@ -228,7 +247,7 @@ export function OrdersInfo() {
         </div>
       )}
       <div className="d-flex flex-column">
-      <i class="fa size fa-arrow-left mt-3" aria-hidden="true" onClick={()=>navigate("/orders")}></i>
+      <i class="fa size fa-arrow-left mt-3 cur" aria-hidden="true" onClick={()=>navigate("/orders")}></i>
       <h1 className="text-center text-danger fw-bold mt-3">
         Orders Info
       </h1>

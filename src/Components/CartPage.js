@@ -1,4 +1,4 @@
-// // import files
+
 import React from "react";
 
 import StripeCheckout from "react-stripe-checkout";
@@ -53,8 +53,8 @@ export default function Cart() {
   const status = "order placed";
 
   // remove from cart
-  const handleRemove = () => {
-    dispatch(removeProduct({ product, price: product.price, quantity, total }));
+  const handleRemove = (index) => {
+    dispatch(removeProduct({index,  price: product[index].price, quantity, total }));
   };
 
   // payment function & api call
@@ -144,7 +144,7 @@ export default function Cart() {
                             <i
                               className="fa fa-trash fa-2x hands"
                               aria-hidden="true"
-                              onClick={handleRemove}
+                              onClick={() => handleRemove(index)}
                             ></i>
                          
                         </div>

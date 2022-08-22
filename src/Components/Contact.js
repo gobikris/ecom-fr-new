@@ -22,7 +22,7 @@ const navigate = useNavigate()
           <h1 className="fw-bold text-primary mt-3 "><i class="fa fa-location-arrow" aria-hidden="true"></i> LOCATION</h1>
           <h4 className="text-dark ">
             support@clothes.in <br />
-            North steert,  Main <br /> Road (NH 8 - Near Mahadev
+            North steert,  Main <br /> Road (NH 8 - Near 
             Hotel) <br />
             Tamilnadu, India 600001
           </h4>

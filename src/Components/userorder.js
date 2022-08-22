@@ -57,7 +57,7 @@ export default function MyOrders() {
 
   return (
     <div className="">
-      <div className="container mt-4">
+      <div className="container mt-4 ">
         <h1 className="text-center text-primary fw-bold mb-4">My Orders</h1>
         <div className="d-flex gap-5 justify-content-center mb-2 ">
           <i
@@ -75,10 +75,10 @@ export default function MyOrders() {
           <p className="text-center text-danger fw-bold mx-auto"></p>
         </div>
         {/* My orders Card */}
-        <div className="row ">
+        <div className="row ms-auto ">
           {isLoading && (
             <div className="mt-5">
-              <div className="row mt-5">
+              <div className="row mt-5 ">
                 <div className="col text-center mt-5">
                   <div class="spinner-grow text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -189,7 +189,7 @@ export function UserOrdersInfo() {
   return (
     <div className="container">
       {/* order info table */}
-      <div className="row  ">
+      <div className="row  table-responsive">
         <i
           class="fa size cur fa-arrow-left mt-5 text-danger"
           aria-hidden="true"
@@ -199,8 +199,8 @@ export function UserOrdersInfo() {
 
         {/* loader */}
         {isLoading && (
-          <div className="mt-5">
-            <div className="row mt-5 text-center">
+          <div className="mt-5 table-responsive">
+            <div className="row mt-5 text-center table-responsive">
               <div className="col  ">
                 <div class="spinner-grow text-primary" role="status">
                   <span class="visually-hidden">Loading...</span>
@@ -230,9 +230,10 @@ export function UserOrdersInfo() {
             </div>
           </div>
         )}
-        <table className="text-center table table-hover table-responsive">
+        <table className="text-center table table-hover ">
           <thead className="bg-dark  text-light">
             <tr>
+              <th>S.No</th>
               <th>Id</th>
               <th>Image</th>
               <th>Name</th>
@@ -248,6 +249,7 @@ export function UserOrdersInfo() {
               orders.product.map((p, index) => {
                 return (
                   <tr>
+                    <td>{index+1}</td>
                     <td>{p._id}</td>
                     <td>
                       <img src={p.img} style={{ width: "60px" }} alt="" />

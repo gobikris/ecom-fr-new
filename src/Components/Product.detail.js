@@ -1,9 +1,12 @@
+
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { API_URL } from "../auth.service/auth.service";
+import InfoNav from "./InfoNav";
+
 
 export default function ProductDetail() {
   // auth service
@@ -28,7 +31,7 @@ export default function ProductDetail() {
   // Api
   const getProductById = async () => {
     try {
-      const authToken = window.localStorage.getItem("authToken");
+      
       const { data } = await axios.get(`${API_URL}/products/${id}`, {
         headers: { Authorization: `Bearer ${authToken}` },
       });
@@ -59,7 +62,8 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="container my-2 pt-2 ">
+    <div className="container-fluid">
+      <InfoNav/>
       {/* loader */}
 
       {isLoading && (
@@ -95,7 +99,7 @@ export default function ProductDetail() {
         </div>
       )}
       {authToken && (
-        <div className="row mt-5">
+        <div className="row mt-4">
           <i
             className="fa fa-2x fa-arrow-left cur text-danger"
             aria-hidden="true"
@@ -236,7 +240,7 @@ export default function ProductDetail() {
                 className="btn btn-dark text-warning fw-bold mt-4"
                 onClick={() => navigate("/cart")}
               >
-                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+               Go To Cart
               </button>
             </div>
             {/* model trigger */}

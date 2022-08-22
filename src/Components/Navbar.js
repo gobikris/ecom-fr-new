@@ -4,13 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux/es/exports';
 import toast from "react-hot-toast";
 import Admin from "../Admin/Admin";
-
-
+import img2 from "../images/cloth.png";
 
 export default function Navbar() {
 
-
-
+  // user email address
   const email = window.localStorage.getItem("email");
 
   const navigate = useNavigate();
@@ -18,7 +16,7 @@ export default function Navbar() {
   // Sign Out
   const SignOut = ()=>{
     window.localStorage.clear();
-    // navigate("/contact");
+    navigate("/")
     toast.success("Sign Out Successfully");
   }
 
@@ -26,13 +24,14 @@ export default function Navbar() {
   
   return (
     <div className="container-fluid">
-      <nav className="navbar navbar-expand-lg text-center  p-4 ">
+      <nav className="navbar navbar-expand-lg text-center nbg text-white   ">
         <div className="container-fluid">
-          <Link className="navbar-brand fw-bold text-danger" to="/">
+          {/* <Link className="navbar-brand fw-bold text-danger" to="/">
             CLOTHES
-          </Link>
+          </Link> */}
+          <img src={img2}  onClick={()=>navigate("/")} className="cur rounded-3" style={{ width: "5rem" }} alt="" />
           <button
-            className="navbar-toggler"
+            className="navbar-toggler text-light"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -45,10 +44,10 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
           
 
-            <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5 ">
+            <ul className="navbar-nav ms-auto mb-2  gap-5 ">
               <li className="nav-item ">
                 {/* home */}
-                <Link className="fw-bold link text-decoration-none" to="/">
+                <Link className="fw-bold link text-decoration-none " to="/">
                   Home
                 </Link>
               </li>
@@ -70,11 +69,12 @@ export default function Navbar() {
 
               </li>
 
+ 
         {/* Account Dropdown */}
 
               <div className="dropdown ">
                 <Link to="/"
-                  className="text-decoration-none fw-bold"
+                  className="text-decoration-none fw-bold text-white "
                  
                   role="button"
                   data-bs-toggle="dropdown"
@@ -88,7 +88,7 @@ export default function Navbar() {
 
                   {/* email */}
                   <li>
-                    <Link className="dropdown-item" to="/account">
+                    <Link className="dropdown-item fw-bold" to="/profile">
                      
                       {email}
                     </Link>
@@ -97,12 +97,12 @@ export default function Navbar() {
                   {/* Orders */}
 
                   <li>
-                    <Link className="dropdown-item" to="/myorders">
+                    <Link className="dropdown-item hand fw-bold" to="/myorders">
                      Orders
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/" onClick={SignOut}>
+                    <Link className="dropdown-item hand fw-bold" to="/" onClick={SignOut}>
                       Sign Out
                     </Link>
                   </li>
@@ -114,8 +114,9 @@ export default function Navbar() {
               {/* Admin btn  */}
                 <li> 
                 <Link
-                  className="fw-bold text-decoration-none"
-                  to="/Admin"
+                  className="fw-bold text-decoration-none m-3"
+                  to="/ahome"
+                  
                   role="button"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
