@@ -5,7 +5,10 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { API_URL } from "../auth.service/auth.service";
 import React from "react";
+
+
 export default function Login() {
+
   const navigate = useNavigate();
 
   // signIn
@@ -43,7 +46,7 @@ export default function Login() {
                     {/* Email Address */}
                     <div className="form-floating mb-3 mt-3">
                       <Field
-                        className="form-control border-0 rounded-pill"
+                        className="form-control border-0 "
                         type="email"
                         name="email"
                         placeholder="Email Address"
@@ -62,7 +65,7 @@ export default function Login() {
                     {/* Password */}
                     <div className="form-floating mb-3">
                       <Field
-                        className="form-control border-0 rounded-pill"
+                        className="form-control border-0 "
                         type="password"
                         name="password"
                         placeholder="Password"
@@ -82,7 +85,7 @@ export default function Login() {
                         type="submit"
                         className="w-100 btn btn-danger  fw-bold rounded-pill p-3"
                       >
-                        LOG IN
+                        SIGN IN
                       </button>
                     </div>
                   </div>

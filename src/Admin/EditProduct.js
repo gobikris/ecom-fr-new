@@ -203,12 +203,12 @@ export function EditForm({ pro }) {
   return (
     <div className="container">
 
-      <div className="row justify-content-center m-2 mt-5 mx-auto gap-3">
+      <div className="row justify-content-center m-2 mt-5 mx-auto gap-3 ">
         <div className="col-sm-4 col-md-6 col-lg-4 p-3 rounded-3 order shadow-lg p-4 mx-auto">
-          <h5 className="text-center bg-warning rounded-5 p-2 fw-bold">EDIT PRODUCT </h5>
+          <h5 className="text-center bg-warning rounded-5 p-2 mb-3 fw-bold">EDIT PRODUCT </h5>
           {/* name */}
           <input
-            className="mt-2 form-control rounded-pill"
+            className="mt-2 form-control p-2 mb-3"
             value={name}
             type="text"
             placeholder="Product Name"
@@ -217,18 +217,18 @@ export function EditForm({ pro }) {
           {/* description */}
 
           <input
-            className="mt-2 form-control rounded-pill"
+            className="mt-2 form-control p-2 mb-3"
             value={desc}
             type="text"
             placeholder="Description"
             onChange={(event) => setDesc(event.target.value)} />
 
 
-          <div className="btn-group mb-2 mt-2 w-100">
+          <div className="btn-group mb-2 mt-2 w-100 mb-3">
             {/* dropdown btn  */}
             <button
               type="button"
-              className="btn btn-outline-white bg-white border-0  rounded-pill p-2 text-start"
+              className="btn btn-outline-white bg-white border-0  p-2 text-start"
               data-bs-toggle="dropdown"
               aria-expanded="false"> Images
             </button>
@@ -297,7 +297,7 @@ export function EditForm({ pro }) {
           {/* fit */}
           <div className=" mb-2">
             <select
-              className="form-control p-2 rounded-pill"
+              className="form-control p-2 text-center mb-3"
               aria-label="Default select example"
               placeholder="Fit"
               type="text"
@@ -320,7 +320,7 @@ export function EditForm({ pro }) {
           {/* price */}
 
           <input
-            className="mt-2 form-control rounded-pill"
+            className="mt-2 form-control p-2 mb-3"
             value={price}
             type="number"
             placeholder="Price"
@@ -329,7 +329,7 @@ export function EditForm({ pro }) {
           {/* rating */}
 
           <input
-            className="mt-2 form-control rounded-pill"
+            className="mt-2 form-control p-2 mb-3"
             value={rating}
             type="number"
             placeholder="Rating"
@@ -338,7 +338,7 @@ export function EditForm({ pro }) {
           {/* offer */}
 
           <input
-            className="mt-2 form-control rounded-pill"
+            className="mt-2 form-control p-2 mb-3"
             value={offer}
             type="number"
             placeholder="offer"

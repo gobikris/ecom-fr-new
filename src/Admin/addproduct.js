@@ -159,7 +159,7 @@ export function AddProduct() {
                 placeholder="Product Name"
                 id="name"
                 required
-                className="form-control rounded-pill p-2"
+                className="form-control  p-2"
                 onChange={setList}
               />
             </div>
@@ -168,7 +168,7 @@ export function AddProduct() {
               <input
                 type="text"
                 name="desc"
-                className="form-control rounded-pill p-2"
+                className="form-control  p-2"
                 placeholder="Description"
                 id="desc"
                 required
@@ -180,7 +180,7 @@ export function AddProduct() {
           <div class="btn-group mb-2">
                 <button
                   type="button"
-                  className="btn btn-outline-white bg-white border-0  rounded-pill p-2 text-start"
+                  className="btn btn-outline-white bg-white border-0  p-2 text-start"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
@@ -192,7 +192,7 @@ export function AddProduct() {
                   <div>
               <input
                 type="file"
-                className="form-control text-center border-0  rounded-pill mb-3 "
+                className="form-control text-center border-0  mb-3 "
                 required
                 onChange={imghandleSubmit}
               />
@@ -203,7 +203,7 @@ export function AddProduct() {
                 type="text"
                 name="img"
                 placeholder=""
-                className="form-control text-center  rounded-pill mb-3"
+                className="form-control text-center  mb-3"
                 id="img"
                 value={img}
                 onChange={setList}
@@ -215,7 +215,7 @@ export function AddProduct() {
 <div>
               <input
                 type="file"
-                className="form-control text-center  rounded-pill mb-3"
+                className="form-control text-center mb-3"
                 required
                 onChange={imghandleSubmit1}
               />
@@ -226,7 +226,7 @@ export function AddProduct() {
                 type="text"
                 name="img1"
                 placeholder=""
-                className="form-control text-center rounded-pill mb-3"
+                className="form-control text-center  mb-3"
                 id="img1"
                 value={img1}
                 onChange={setList}
@@ -239,7 +239,7 @@ export function AddProduct() {
             <div>
               <input
                 type="file"
-                className="form-control text-center   rounded-pill mb-3"
+                className="form-control text-center mb-3"
                 required
                 onChange={imghandleSubmit2}
               />
@@ -250,7 +250,7 @@ export function AddProduct() {
                 type="text"
                 name="img2"
                 placeholder=""
-                className="form-control text-center   rounded-pill mb-3"
+                className="form-control text-center  mb-3"
                 id="img2"
                 value={img2}
                 onChange={setList}
@@ -269,7 +269,7 @@ export function AddProduct() {
             {/* fit */}
             <div className=" mb-2">
               <select
-                className="form-control p-2 rounded-pill"
+                className="form-control p-2 "
                 aria-label="Default select example"
                 placeholder="Fit"
                 type="text"
@@ -295,7 +295,7 @@ export function AddProduct() {
                 type="number"
                 name="price"
                 placeholder="Price"
-                className="form-control rounded-pill"
+                className="form-control p-2"
                 id="price"
                 required
                 onChange={setList}
@@ -307,7 +307,7 @@ export function AddProduct() {
                 type="number"
                 name="rating"
                 placeholder="Rating"
-                className="form-control rounded-pill"
+                className="form-control p-2"
                 id="rating"
                 required
                 onChange={setList}
@@ -319,7 +319,7 @@ export function AddProduct() {
                 type="number"
                 name="offer"
                 placeholder="offer"
-                className="form-control rounded-pill p-2"
+                className="form-control p-2"
                 id="offer"
                 required
                 onChange={setList}
@@ -327,8 +327,9 @@ export function AddProduct() {
             </div>
             {/* submit Button */}
             <button
+             
               type="submit"
-              className="btn btn-danger   rounded-pill p-2 fw-bold"
+              className="btn btn-danger  rounded-pill p-2 fw-bold"
             >
               Add Product
             </button>

@@ -389,7 +389,7 @@ export function EditOrderForm({ orders }) {
           />
           {/* status */}
           <select
-            className="mt-3 form-control rounded-pill p-3"
+            className="mt-3 form-control  p-3"
             value={status}
             onChange={(event) => setStatus(event.target.value)}
           >

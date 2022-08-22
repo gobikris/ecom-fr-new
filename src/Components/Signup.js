@@ -40,9 +40,9 @@ export default function Signup() {
       
         <div className="row justify-content-center mt-5">
         
-          <div className="col-lg-5 col-md-7 mt-3">
+          <div className="col-lg-4 col-md-7 mt-3">
           
-            <form  onSubmit={handleSubmit} className="d-flex flex-column shadow-lg p-5 back rounded-5">
+            <form  onSubmit={handleSubmit} className="d-flex flex-column shadow-lg p-5 back rounded-4">
               {/* name */}
               
               <h3 className="text-center mb-4 bg-warning rounded-3 p-2">
@@ -53,7 +53,7 @@ export default function Signup() {
                   type="name"
                   name="fullname"
                   onChange={setForm}
-                  className="form-control text-center border-0 rounded-pill"
+                  className="form-control border-0 rounded"
                   placeholder="Full Name"
                   required
                 />
@@ -72,7 +72,7 @@ export default function Signup() {
                   id="email"
                   
                   onChange={setForm}
-                  className="form-control text-center border-0 rounded-pill"
+                  className="form-control border-0 rounded"
                   placeholder="Email Address"
                   required
                 />
@@ -88,7 +88,7 @@ export default function Signup() {
                   id="contact"
                  
                   onChange={setForm}
-                  className="form-control text-center border-0 rounded-pill"
+                  className="form-control  border-0 rounded"
                   placeholder="Contact No"
                   required
                 />
@@ -104,7 +104,7 @@ export default function Signup() {
                   
                   id="password"
                   onChange={setForm}
-                  className="form-control text-center border-0 rounded-pill"
+                  className="form-control  border-0 "
                   placeholder="Password"
                   required
                 />

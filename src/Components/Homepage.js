@@ -50,8 +50,8 @@ export default function Homepage() {
           <br />
           
           <h1 className="text-center fw-bold text mb-5  mt-5">Our Products</h1>
-          <div className="d-flex flex-wrap justify-content-between gap-4 mt-5">
-            <div className="card rounded-5 border-0 bg-transparent" style={{ width: "18rem" }}>
+          <div className="col d-flex flex-wrap  justify-content-between gap-4 mt-5">
+            <div className="card rounded-5 border-0 bg-transparent cur mx-auto" style={{ width: "18rem" }}>
               <img
               onClick={()=>navigate("/shop")}
                 src="https://contents.mediadecathlon.com/p732697/a7ceed49f385e3e13bab53fd65f40455/p732697.jpg?format=auto&quality=70&f=440x0"
@@ -63,7 +63,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className="card rounded-5 border-0" style={{ width: "18rem" }}>
+            <div className="card rounded-5 border-0  cur mx-auto" style={{ width: "18rem" }}>
               <img
               onClick={()=>navigate("/shop")}
                 src="https://4.imimg.com/data4/BE/WA/MY-9097565/mens-round-neck-t-shirts-500x500.png"
@@ -75,7 +75,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <div className="card rounded-5 border-0" style={{ width: "18rem" }}>
+            <div className="card rounded-5 border-0 cur mx-auto" style={{ width: "18rem" }}>
               <img
                 onClick={()=>navigate("/shop")}
                 src="https://pyxis.nymag.com/v1/imgs/333/585/da5605a2bb5d66e7d75d147034786ab4be.rsquare.w600.jpg"
