@@ -93,9 +93,13 @@ export default function Cart() {
 
   return (
     <div>
+  
       <div className="container">
+      
       <i class="fa size fa-arrow-left mt-5 hand" onClick={()=>navigate("/shop")} aria-hidden="true"></i>
+        
         <div className="row">
+       
         <div className="d-flex justify-content-center">
         
           <h1 className="text-center  bg-warning rounded-pill p-2">
@@ -103,6 +107,12 @@ export default function Cart() {
             Your Cart <span className="text-danger">({quantity})</span>
           </h1>
           </div>
+          {quantity === 0?(
+            <>
+              <h1 className="text-center">Your Cart Is Empty</h1>
+              <img className="img-fluid mx-auto mt-5" style={{width: "35rem"}} src="https://cdn.dribbble.com/users/5107895/screenshots/14532312/media/a7e6c2e9333d0989e3a54c95dd8321d7.gif" alt="" />
+              </>
+          ):(
           <div className="col-lg-7 col-md-12 col-12 mx-auto mt-3">
             
             {product.map((c, index) => {
@@ -154,8 +164,8 @@ export default function Cart() {
                 </>
               );
             })}
-          </div>
-
+          </div>  )}
+          
           <div className="col-lg-4 col-md-12 col-12 mt-5 text-center">
             <ul className="list-group list-group-flush mt-5">
               <hr />
@@ -185,7 +195,9 @@ export default function Cart() {
                 </StripeCheckout>
               </li>
             </ul>
+            
           </div>
+       
         </div>
       </div>
     </div>

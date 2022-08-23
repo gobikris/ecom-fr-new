@@ -75,7 +75,7 @@ export default function MyOrders() {
           <p className="text-center text-danger fw-bold mx-auto"></p>
         </div>
         {/* My orders Card */}
-        <div className="row ms-auto ">
+        <div className="row ">
           {isLoading && (
             <div className="mt-5">
               <div className="row mt-5 ">
@@ -116,9 +116,9 @@ export default function MyOrders() {
 
               return (
                 <>
-                  <div className="col-lg-4 col-md-6 mt-5">
+                  <div className="col-lg-4 col-md-6 mt-5 ">
                     <div
-                      className="card order hand border-0 shadow-lg rounded-4 cur"
+                      className="card order hand border-0 shadow-lg rounded-4 cur mx-auto"
                       style={{ width: "18rem" }}
                       onClick={() => navigate("/MyOrderInfo/" + g._id)}
                     >
@@ -162,6 +162,7 @@ export default function MyOrders() {
 
 // order info
 export function UserOrdersInfo() {
+  
   // navigate to page
   const navigate = useNavigate();
 
