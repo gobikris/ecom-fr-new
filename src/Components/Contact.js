@@ -11,7 +11,10 @@ const navigate = useNavigate()
       <div className="container">
         
         <div className="row mt-3">
+
+    {/* back icon */}
         <i className="fa fa-2x fa-arrow-left cur" aria-hidden="true" onClick={()=>navigate("/")}></i>
+         
           <div className="d-flex gap-3 justify-content-center">
           
           <h1 className="text-center bg-warning p-2 rounded-3 fw-bold">Contact Us</h1>
@@ -19,7 +22,9 @@ const navigate = useNavigate()
         
         
           <div className="col-lg-5 col-md-12 col-12 mt-4 m-auto">
-          <h1 className="fw-bold text-primary mt-3 "><i class="fa fa-location-arrow" aria-hidden="true"></i> LOCATION</h1>
+
+      {/* address */}
+          <h1 className="fw-bold text-primary mt-3 "><i className="fa fa-location-arrow" aria-hidden="true"></i> LOCATION</h1>
           <h4 className="text-dark ">
             support@clothes.in <br />
             North steert,  Main <br /> Road (NH 8 - Near 
@@ -27,8 +32,8 @@ const navigate = useNavigate()
             Tamilnadu, India 600001
           </h4>
 <hr />
-          <h1 className="text-primary mt-3">NEED HELP</h1>
-          {/* <Link to="/contact" className="text-decoration-none">Contact Us</Link> */}
+          <h1 className="text-primary mt-3">NEED HELP <i className="fa fa-question" aria-hidden="true"></i></h1>
+         
           <i class="fa fa-2x fa-envelope mb-2" aria-hidden="true"> info@clothes.in</i>  <br />
           
           <Link to="/return" className="text-decoration-none text-danger fw-bold">Return, Refund and Cancellation</Link>

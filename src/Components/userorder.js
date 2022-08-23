@@ -1,9 +1,7 @@
 // import files
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React, { useEffect,useState } from "react";
+import { useNavigate,useParams } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { API_URL } from "../auth.service/auth.service";
 
 // my orders page
@@ -80,29 +78,29 @@ export default function MyOrders() {
             <div className="mt-5">
               <div className="row mt-5 ">
                 <div className="col text-center mt-5">
-                  <div class="spinner-grow text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-secondary" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-secondary" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-success" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-success" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-danger" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-danger" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-warning" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-warning" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-info" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-info" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-light" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-light" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div class="spinner-grow text-dark" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-grow text-dark" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
                 </div>
               </div>
@@ -125,9 +123,9 @@ export default function MyOrders() {
                       <div className="card-body  rounded-4">
                         <h5 className="card-title bg-success text-light rounded-pill text-center">
                           Orders{" "}
-                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {index + 1}
-                            <span class="visually-hidden">unread messages</span>
+                            <span className="visually-hidden">unread messages</span>
                           </span>
                         </h5>
                         <hr />

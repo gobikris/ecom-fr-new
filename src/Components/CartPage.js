@@ -1,23 +1,21 @@
-
 import React from "react";
-
 import StripeCheckout from "react-stripe-checkout";
-
 import { useDispatch, useSelector } from "react-redux";
 import { removeProduct } from "../redux/cartRedux";
 import axios from "axios";
-
 import { useNavigate } from "react-router-dom";
-
 import { API_URL } from "../auth.service/auth.service";
+
 
 // stripe key
 const KEY =
   "pk_test_51LWmdWSGxPk4jZ13vrjMH5nyOkGS84hAOr5fmDikbWTZ548Me4dYP98J4KYWwnHx5oitzsdESNBQAhZQ8wbtXfTW00YPvEUw0n";
 
+
+  
 // cart function
 export default function Cart() {
-  // authtoken localStorage
+  // authtoken 
   const authToken = window.localStorage.getItem("authToken");
 
   // get Id from authToken
@@ -147,10 +145,11 @@ export default function Cart() {
                             Qty:-{" "}
                             <span className="text-success">{quantity}</span>
                           </p>
+                          
                           <p className="fw-bold text-danger">
                             Size: <small className="text-success">{size}</small>
                           </p>
-                          
+                          {/* delete btn */}
                             <i
                               className="fa fa-trash fa-2x hands"
                               aria-hidden="true"
@@ -187,7 +186,6 @@ export default function Cart() {
                   stripeKey={KEY}
                 >
                   <button
-                    data-bs-dismiss="offcanvas"
                     className="btn btn-lg btn-dark text-warning fw-bold w-100"
                   >
                     Pay Now
