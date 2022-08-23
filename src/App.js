@@ -63,7 +63,7 @@ export default function App() {
 
       {/* forgot and reset password */}
       <Route path="/forgot" element={<FPassword/>}/>
-      <Route path="/reset/:id/:token" element={<RPassword />} />
+      <Route path="/auth/reset/:id/:token" element={<RPassword />} />
       <Route path="/return" element={<Return/>}/>
 
       <Route path="/orders" element={<OrderList />} />
