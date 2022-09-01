@@ -115,21 +115,21 @@ export default function ProductDetail() {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <img
-                    src={list.img}
+                    src={list.img?.url}
                     className="d-block imgfun rounded-5 img-fluid"
                     alt="..."
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src={list.img1}
+                    src={list.img1?.url}
                     className="d-block imgfun  rounded-5 img-fluid"
                     alt="..."
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src={list.img2}
+                    src={list.img2?.url}
                     className="d-block imgfun rounded-5 img-fluid"
                     alt="..."
                   />
@@ -250,7 +250,7 @@ export default function ProductDetail() {
               data-bs-toggle="modal"
               data-bs-target="#exampleModal2"
             >
-              <span className="text-secondary">📏Size</span>
+              <span className="text-secondary">📏Size Guide</span>
             </button>
 
             {/*  model start */}

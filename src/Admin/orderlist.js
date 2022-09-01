@@ -16,7 +16,7 @@ export default function OrderList() {
   const alogin = <h1 className="text-center fw-bold mt-5 text-danger">"Access Denied"</h1>
   
   // auth
-  const authToken = window.localStorage.getItem("authToken");
+ 
   
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ export default function OrderList() {
     try {
       const { data } = await axios.get(`${API_URL}/orders`, {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Bearer ${adminToken}`,
         },
       });
       setUsers(data);
@@ -50,7 +50,11 @@ export default function OrderList() {
   const deleteOrder = async ({ _id }) => {
     if (window.confirm(`Delete this order ?`)) {
       try {
-        await axios.delete(`${API_URL}/orders/${_id}`, { _id });
+        await axios.delete(`${API_URL}/orders/${_id}`,{
+          headers: {
+            Authorization: `Bearer ${adminToken}`,
+          },
+        });
         toast.success("Order Deleted ");
         getUsers();
       } catch (error) {
@@ -188,6 +192,7 @@ export default function OrderList() {
 // user individual orders Information
 export function OrdersInfo() {
   
+  const adminToken = window.localStorage.getItem("AdminToken");
   const navigate = useNavigate();
 
   // state management
@@ -198,7 +203,11 @@ export function OrdersInfo() {
   // get order
   const getOrderInfo = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/orders/${id}`);
+      const { data } = await axios.get(`${API_URL}/orders/${id}`,{
+        headers: {
+          Authorization: `Bearer ${adminToken}`,
+        },
+      });
       setOrders(data);
       setIsLoading(false);
     } catch (error) {
@@ -261,6 +270,7 @@ export function OrdersInfo() {
               <th>Product Image</th>
               <th>Id</th>
               <th>Product Name</th>
+              <th>Size</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Average</th>
@@ -271,9 +281,10 @@ export function OrdersInfo() {
               orders.product.map((p, index) => {
                 return (
                   <tr>
-                    <td><img src={p.img} style={{width:"80px"}} alt="" /></td>
+                    <td><img src={p.img.url} style={{width:"80px"}} alt="" /></td>
                     <td>{p._id}</td>
                     <td>{p.name}</td>
+                    <td>{p.size}</td>
                     <td>{p.price}</td>
                     <td>{p.quantity}</td>
                     <td>{p.price * p.quantity}</td>
@@ -287,8 +298,9 @@ export function OrdersInfo() {
   );
 }
 
-// Edit FoodList
+// Edit 
 export function EditOrderList() {
+  const adminToken = window.localStorage.getItem("AdminToken");
   // state management
   const { id } = useParams();
   const [orders, setOrders] = useState(null);
@@ -296,7 +308,11 @@ export function EditOrderList() {
   // edit orders & api call
   const editOrders = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/orders/${id}`);
+      const { data } = await axios.get(`${API_URL}/orders/${id}`,{
+        headers: {
+          Authorization: `Bearer ${adminToken}`,
+        },
+      });
       setOrders(data);
     } catch (error) {
       console.log(error.message);
@@ -346,6 +362,7 @@ export function EditOrderList() {
 
 // Edit order form function
 export function EditOrderForm({ orders }) {
+  const adminToken = window.localStorage.getItem("AdminToken");
   // navigate to page
   const navigate = useNavigate();
 
@@ -357,8 +374,8 @@ export function EditOrderForm({ orders }) {
   const [status, setStatus] = useState(orders.status);
 
   // edit order details & api call
-  const editfood = async () => {
-    const updateFood = {
+  const edit = async () => {
+    const update = {
       userId: userId,
       token: token,
       product: product,
@@ -367,8 +384,13 @@ export function EditOrderForm({ orders }) {
     };
 
     try {
-      await axios.put(`${API_URL}/orders/${orders._id}`, updateFood);
+      await axios.put(`${API_URL}/orders/${orders._id}`,update,{
+        headers: {
+          Authorization: `Bearer ${adminToken}`,
+        },
+      });
       navigate("/orders");
+      toast.success("Status Updated")
     } catch (error) {
       console.log(error.message);
     }
@@ -387,6 +409,34 @@ export function EditOrderForm({ orders }) {
             style={{width:"200px"}}
             alt=""
           />
+
+<input
+            className="mt-2 form-control"
+            value={userId}
+            type="text"
+            placeholder="userId"
+            onChange={(event) => setUserId(event.target.value)} />
+          {/* token */}
+          <input
+            className="mt-2 form-control"
+            value={token}
+            type="text"
+            placeholder="token"
+            onChange={(event) => setToken(event.target.value)} />
+          {/* product */}
+          <input
+            className="mt-2 form-control"
+            value={product}
+            type="text"
+            placeholder="Product"
+            onChange={(event) => setProduct(event.target.value)} />
+          {/* total */}
+          <input
+            className="mt-2 form-control"
+            value={total}
+            type="number"
+            placeholder="Total"
+            onChange={(event) => setTotal(event.target.value)} />
           {/* status */}
           <select
             className="mt-3 form-control  p-3"
@@ -402,18 +452,12 @@ export function EditOrderForm({ orders }) {
           {/* submit */}
           <button
             className="btn btn-outline-success fw-bold mt-3 rounded-pill p-3 form-control "
-            onClick={editfood}
+            onClick={edit}
           >
             SEND STATUS
           </button>
         </div>
-        {/* <div className="col-sm-4 col-md-6 col-lg-6 mx-auto">
-          <img
-            src="https://i.pinimg.com/originals/c0/10/de/c010de3f478611b2c745d78497d0428e.gif"
-            className="w-100 rounded-5"
-            alt=""
-          />
-        </div> */}
+        
       </div>
     </div>
   );

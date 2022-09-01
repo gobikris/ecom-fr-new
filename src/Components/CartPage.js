@@ -18,22 +18,6 @@ export default function Cart() {
   // authtoken 
   const authToken = window.localStorage.getItem("authToken");
 
-  // get Id from authToken
-  function parseJwt(token) {
-    var base64Url = token.split(".")[1];
-    var base64 = decodeURIComponent(
-      atob(base64Url)
-        .split("")
-        .map((c) => {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
-    return JSON.parse(base64);
-  }
-
-  let a = parseJwt(authToken);
-  let userId = a._id;
 
   // navigate to page
   const navigate = useNavigate();
@@ -71,7 +55,7 @@ export default function Cart() {
     // send to orders from db
     await axios.post(
       `${API_URL}/orders`,
-      { userId, token, product, total, status },
+      {token, product, total, status },
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -124,7 +108,7 @@ export default function Cart() {
                     <div className="row g-0">
                       <div className="col-md-4">
                         <img
-                          src={img}
+                          src={img.url}
                           className="img-fluid"
                           style={{ width: "120px" }}
                           alt="..."
@@ -201,3 +185,6 @@ export default function Cart() {
     </div>
   );
 }
+
+
+

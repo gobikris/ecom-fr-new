@@ -18,8 +18,14 @@ export default function Ahome() {
   
   return (
     <div className="container my-2 pt-2 mt-3">
-      <h1 className="text-center fw-bold text-danger rounded-pill p-2 shadow-lg order">DASHBOARD</h1>
-      <div className='d-flex justify-content-end'><button className='btn btn-danger rounded-pill fw-bold' onClick={SignOut}>SignOut</button></div>
+      <div className="d-flex rounded-pill p-2 justify-content-center shadow-lg order ">
+        
+        <h1 className="text-danger fw-bold mx-auto ">DASHBOARD</h1>
+      
+      <img className="img-fluid hand rounded-pill " onClick={SignOut} style={{width:"4rem"}} src="https://cdn.dribbble.com/users/1797873/screenshots/5310497/logout.gif" alt="" />
+      
+      </div>
+      <div className='justify-content-end mt-3'></div>
       
      
       <div className="row">
@@ -36,8 +42,8 @@ export default function Ahome() {
           
           {/* Add Product btn */}
           
-          <div className="d-flex gap-5 mt-5">
-            <div className="card hand border-0 shadow-lg bg-primary" style={{width: "12rem"}}>
+          <div className="d-flex gap-5 mt-5 ">
+            <div className="card hand border-0 shadow-lg bg-primary mx-auto" style={{width: "14rem"}}>
               <img src="https://i.gifer.com/3qDI.gif" onClick={() => navigate("/addproduct")} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <p className="card-text text-center fw-bold  text-light ">Add Product</p>
@@ -46,7 +52,7 @@ export default function Ahome() {
 
           {/* Users Btn */}
 
-            <div className="card hand border-0 shadow-lg bg-dark" style={{width: "12rem"}}>
+            <div className="card hand border-0 shadow-lg bg-dark mx-auto" style={{width: "14rem"}}>
               <img src="https://i.pinimg.com/originals/91/7c/06/917c06856035dd3d396b62916d082472.gif" onClick={()=>navigate("/users")} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <p className="card-text text-center fw-bold text-light">Users Info</p>
@@ -60,7 +66,7 @@ export default function Ahome() {
 
         {/* Order List */}
 
-          <div className="card hand border-0 shadow-lg bg-danger" style={{width: "12rem"}}>
+          <div className="card hand border-0 shadow-lg bg-danger mx-auto" style={{width: "14rem"}}>
               <img src="https://i.gifer.com/8grL.gif" onClick={()=>navigate("/orders")} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <p className="card-text text-center fw-bold text-light" >Order List</p>
@@ -69,7 +75,7 @@ export default function Ahome() {
 
         {/* Product List */}
 
-              <div className="card hand border-0 shadow-lg bg-success" style={{width: "12rem"}}>
+              <div className="card hand border-0 shadow-lg bg-success mx-auto" style={{width: "14rem"}}>
               <img src="https://i.pinimg.com/originals/78/0e/82/780e82a59775c95c72df27c9d8e1bb74.gif" onClick={()=>navigate("/productlist")} className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <p className="card-text text-center fw-bold text-light">Product List</p>

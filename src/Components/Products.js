@@ -6,9 +6,6 @@ import InfoNav from "./InfoNav";
 
 
 
-
-
-
 export default function Products() {
 
   // access 
@@ -25,6 +22,20 @@ export default function Products() {
 
   // navigation state
   const navigate = useNavigate();
+
+  // filter state
+  // const [fil, setFil] = useState(list);
+  // // filter 
+  // const filter = (cat)=>{
+  //   const update = list.filter((cur)=>{
+  //     return cur.category === cat;
+  //   })
+  //   setFil(update);
+  // }
+  // // const styles = {
+  // //   display: foo ? "block" : "none",
+  // // };
+
 
   // api call
   const getProducts = async () => {
@@ -49,8 +60,10 @@ export default function Products() {
 
   return (
     <div className="container-fluid">
+      
       <InfoNav/>
       <div className="d-flex justify-content-between mx-3 mt-4">
+      
         <input
           type="text"
           className="form-control w-75 p-2 rounded-pill"
@@ -66,8 +79,23 @@ export default function Products() {
         </button>
       </div>
 
+       {/* <div className="d-flex mt-3 gap-3">
+       <i className="fa fa-filter mt-2 size" aria-hidden="true"></i>
+       <select name="" id="" className="rounded p-2 border border-2 border-dark">
+        <option value="">--Select--</option>
+          <option value=""><button className="btn btn-warning fw-bold rounded-pill" >Polo</button></option>
+          <option value=""><button className="btn btn-warning fw-bold rounded-pill" >Rounded</button></option>
+          <option value=""><button className="btn btn-warning fw-bold rounded-pill" onClick={() => {
+                  setFil(list);
+                }}>Full-Sleeve</button></option>
+       </select>
+          
+        </div>  */}
+        
       <div className="row text-center mt-2 ">
+
         <p className=" fw-bold mb-4">All Product</p>
+        
         {isLoading && (
           <div className="text-center mt-5">
 
@@ -96,8 +124,10 @@ export default function Products() {
             <div className="spinner-grow text-dark" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
+            
           </div>
         )}
+        
         {list.map && list.filter((g)=>g.name.toLowerCase().includes(state)).map((p)=>{
           const {name,img,price,_id} = p
           return (
@@ -105,7 +135,7 @@ export default function Products() {
            
               <div className="col-lg-4 mb-4 ">
                 <div className="card border-0 text-center  hand  rounded-3 shadow-lg  mt-2 mx-auto" style={{ width: "18rem" }}>
-                <img src={img} className="img-fluid pro" alt={name} onClick={(()=> navigate("/shop/"+_id))}/>
+                <img src={img.url} className="img-fluid pro" alt={name} onClick={(()=> navigate("/shop/"+_id))}/>
                   <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text bg-warning rounded-pill fw-bold">
@@ -121,6 +151,8 @@ export default function Products() {
         })}
        
       </div>
+      
+        
     </div>
   );
 }

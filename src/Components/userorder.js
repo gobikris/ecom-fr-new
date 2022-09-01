@@ -21,33 +21,21 @@ export default function MyOrders() {
   //  Loading 
   const [isLoading, setIsLoading] = useState(true);
 
-  // get userById from authToken
-  function parseJwt(token) {
-    var base64Url = token.split(".")[1];
-    var base64 = decodeURIComponent(
-      atob(base64Url)
-        .split("")
-        .map((c) => {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
-    return JSON.parse(base64);
-  }
-  let a = parseJwt(authToken);
-  let userId = a._id;
-
   // api
   const getUserById = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/orders/userId/${userId}`);
+      const { data } = await axios.get(`${API_URL}/orders/userId/userId`,
+      {
+        headers: { Authorization:`Bearer ${authToken}`}
+      }
+  );
       setMyOrders(data);
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
   };
-
+  
   // useEffect
   useEffect(() => {
     getUserById();
@@ -58,6 +46,7 @@ export default function MyOrders() {
       <div className="container mt-4 ">
         <h1 className="text-center text-primary fw-bold mb-4">My Orders</h1>
         <div className="d-flex gap-5 justify-content-center mb-2 ">
+         
           <i
             className="fa fa-2x fa-arrow-left hand mt-2"
             aria-hidden="true"
@@ -106,14 +95,15 @@ export default function MyOrders() {
               </div>
             </div>
           )}
-
+            
           {myOrders
             .filter((g) => g._id.includes(query))
             .map((g, index) => {
               const { _id, date, time, total, status } = g;
-
+              
               return (
                 <>
+                
                   <div className="col-lg-4 col-md-6 mt-5 ">
                     <div
                       className="card order hand border-0 shadow-lg rounded-4 cur mx-auto"
@@ -129,6 +119,7 @@ export default function MyOrders() {
                           </span>
                         </h5>
                         <hr />
+                        
                         <div className="text-start">
                           <p className="card-text fw-bold">
                             Id:- <span>{_id}</span>
@@ -161,6 +152,7 @@ export default function MyOrders() {
 // order info
 export function UserOrdersInfo() {
   
+  const authToken = window.localStorage.getItem("authToken");
   // navigate to page
   const navigate = useNavigate();
 
@@ -172,7 +164,9 @@ export function UserOrdersInfo() {
   // get order info
   const getOrderInfo = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/orders/${id}`);
+      const { data } = await axios.get(`${API_URL}/orders/${id}`,{
+        headers: { Authorization: `Bearer ${authToken}` }
+      });
       setOrders(data);
       setIsLoading(false);
     } catch (error) {
@@ -251,7 +245,7 @@ export function UserOrdersInfo() {
                     <td>{index+1}</td>
                     <td>{p._id}</td>
                     <td>
-                      <img src={p.img} style={{ width: "60px" }} alt="" />
+                      <img src={p.img.url} style={{ width: "60px" }} alt="" />
                     </td>
                     <td>{p.name}</td>
                     <td>{p.size}</td>

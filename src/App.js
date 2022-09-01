@@ -12,7 +12,7 @@ import Ahome from './Admin/A.home';
 import ProductList from './Admin/productlist';
 import { AddProduct } from './Admin/addproduct';
 
-import UserList from './Admin/users';
+import User from './Admin/users';
 import Admin from './Admin/Admin';
 import Credit from './Components/credit';
 import FPassword from './Components/F.password';
@@ -43,14 +43,15 @@ export default function App() {
       <Route path="/signin" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/cart" element={<CartPage />} />
+
       {/* this is admin pages */}
-      {/* this is admin pages */}
+
       <Route path="/Ahome" element={<Ahome />} />
       <Route path="/productlist" element={<ProductList/>} />
       <Route path="/addproduct" element={<AddProduct/>} />
       <Route path="/editproduct/:id" element={<EditProduct/>} />
       {/* <Route path="/addproduct" element={<AddFoodList/>} /> */}
-      <Route path="/users" element={<UserList />} />
+      <Route path="/users" element={<User />} />
     
       <Route path="/credit" element={<Credit/>}/>
       <Route path="/myorders" element={<MyOrders/>}/>

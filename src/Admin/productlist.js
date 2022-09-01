@@ -157,7 +157,7 @@ export default function ProductList() {
                   <tr key={index}>
                     <td>{index+1}</td>
                     <td>
-                      <img src={p.img} alt={p.name} className="img-fluid" style={{width:"80px"}} />
+                      <img src={p.img.url} alt={p.name} className="img-fluid" style={{width:"80px"}} />
                     </td>
                     <td>{p._id}</td>
                     <td >{p.name}</td>

@@ -66,7 +66,7 @@ export default function InfoNav() {
                 <i 
                   className="fa fa-2x fa-shopping-bag text-danger"
                   aria-hidden="true"
-               
+                  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
                 ></i>
 
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

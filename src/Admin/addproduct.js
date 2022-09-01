@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { useReducer,useState } from "react";
-import { formReducer } from "../store/form.service";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../auth.service/auth.service";
 import toast from "react-hot-toast";
@@ -102,25 +101,33 @@ export function AddProduct() {
   };
 
   
-  // form initialValues
-  const [list, setList] = useReducer(formReducer, {
-    name:"",
-    img:img,
-    img1:img1,
-    img2:img2,
-    fit:"",
-    desc:"",
-    price:"",
-    rating:"",
-    offer:"",
-  });
+  // schema 
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [price,setPrice] = useState("");
+  const [rating, setRating] = useState("");
+  const [offer, setOffer] = useState("");
+  const [fit, setFit] = useState("");
 
+  
   // form submit
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const List = {
+      name,
+      img,
+      img1,
+      img2,
+      desc,
+      fit,
+      price,
+      rating,
+      offer,
+    }
+    console.log(List);
     try {
       // api call
-      await axios.post(`${API_URL}/products`, list);
+      await axios.post(`${API_URL}/products`, List);
       navigate("/productlist");
       toast.success("Product Added Successfully")
     } catch (error) {
@@ -160,7 +167,7 @@ export function AddProduct() {
                 id="name"
                 required
                 className="form-control  p-2"
-                onChange={setList}
+                onChange={(e)=>setName(e.target.value)}
               />
             </div>
             {/*  description */}
@@ -172,7 +179,7 @@ export function AddProduct() {
                 placeholder="Description"
                 id="desc"
                 required
-                onChange={setList}
+                onChange={(e)=>setDesc(e.target.value)}
               />
             </div>
           {/* dropdown */}
@@ -199,7 +206,7 @@ export function AddProduct() {
             </div>
             {/* Image */}
             <div>
-              <input
+              {/* <input
                 type="text"
                 name="img"
                 placeholder=""
@@ -208,7 +215,7 @@ export function AddProduct() {
                 value={img}
                 onChange={setList}
                 required
-              />
+              /> */}
             </div>
                   </li>
 {/* Base64 1*/}
@@ -222,7 +229,7 @@ export function AddProduct() {
             </div>
             {/* Image 1 */}
             <div>
-              <input
+              {/* <input
                 type="text"
                 name="img1"
                 placeholder=""
@@ -231,7 +238,7 @@ export function AddProduct() {
                 value={img1}
                 onChange={setList}
                 required
-              />
+              /> */}
             </div>
 
                   <li>
@@ -246,7 +253,7 @@ export function AddProduct() {
             </div>
             {/* Image 2*/}
             <div>
-              <input
+              {/* <input
                 type="text"
                 name="img2"
                 placeholder=""
@@ -255,7 +262,7 @@ export function AddProduct() {
                 value={img2}
                 onChange={setList}
                 required
-              />
+              /> */}
             </div>
                   </li>
 
@@ -274,7 +281,7 @@ export function AddProduct() {
                 placeholder="Fit"
                 type="text"
                 name="fit"
-                onChange={setList}
+                onChange={(e)=>setFit(e.target.value)}
               >
                 <option selected>--Select Fit--</option>
                 <option type="text" name="fit" value="Regular Fit">
@@ -298,7 +305,7 @@ export function AddProduct() {
                 className="form-control p-2"
                 id="price"
                 required
-                onChange={setList}
+                onChange={(e)=>setPrice(e.target.value)}
               />
             </div>
             {/*  Rating */}
@@ -310,7 +317,7 @@ export function AddProduct() {
                 className="form-control p-2"
                 id="rating"
                 required
-                onChange={setList}
+                onChange={(e)=>setRating(e.target.value)}
               />
             </div>
             {/*  offer */}
@@ -322,7 +329,7 @@ export function AddProduct() {
                 className="form-control p-2"
                 id="offer"
                 required
-                onChange={setList}
+                onChange={(e)=>setOffer(e.target.value)}
               />
             </div>
             {/* submit Button */}

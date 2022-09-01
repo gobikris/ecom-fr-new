@@ -8,12 +8,13 @@ import { API_URL } from "../auth.service/auth.service";
 
 
 // All user List
-export default function UserList() {
+export default function User() {
   
   // access
   const adminToken = window.localStorage.getItem("AdminToken");
   const alogin = <h1 className="text-center fw-bold mt-5 text-danger">"Access Denied"</h1>
 
+ 
 
   const navigate = useNavigate();
 
@@ -30,7 +31,11 @@ export default function UserList() {
   // get users details
   const getUsers = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/users`);
+      const { data } = await axios.get(`${API_URL}/users`,{
+         headers: {
+          Authorization: `Bearer ${adminToken}`,
+        },
+      });
       setUsers(data);
       setIsLoading(false);
       
@@ -47,7 +52,11 @@ export default function UserList() {
   const deleteUser = async ({fullname, _id}) => {
     if (window.confirm(`Delete this user ${fullname}`)) {
         try {
-            await axios.delete(`${API_URL}/users/${_id}`, {_id});
+            await axios.delete(`${API_URL}/users/${_id}`,{
+              headers: {
+                Authorization: `Bearer ${adminToken}`,
+              },
+            });
             toast.success(`${fullname} Deleted `);
             getUsers();
         } catch (error) {

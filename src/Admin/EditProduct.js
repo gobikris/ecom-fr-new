@@ -85,7 +85,7 @@ export function EditForm({ pro }) {
   // image
   // state management
   const [base64code, setbase64code] = useState("");
-  const [image, setImage] = useState("");
+  const [img, setImg] = useState("");
 
   // image handle function
   const imghandleSubmit = (e) => {
@@ -96,7 +96,7 @@ export function EditForm({ pro }) {
 
   // image file converted to string
   const onLoad = (fileString) => {
-    setImage(fileString);
+    setImg(fileString);
     setbase64code = fileString;
   };
 
@@ -113,7 +113,7 @@ export function EditForm({ pro }) {
   // image1
   // state management
   const [base64code1, setbase64code1] = useState("");
-  const [image1, setImage1] = useState("");
+  const [img1, setImg1] = useState("");
 
   // image handle function
   const imghandleSubmit1 = (e) => {
@@ -124,7 +124,7 @@ export function EditForm({ pro }) {
 
   // image file converted to string
   const onLoad1 = (fileString) => {
-    setImage1(fileString);
+    setImg1(fileString);
     setbase64code1 = fileString;
   };
 
@@ -141,7 +141,7 @@ export function EditForm({ pro }) {
   // image2
   // state management
   const [base64code2, setbase64code2] = useState("");
-  const [image2, setImage2] = useState("");
+  const [img2, setImg2] = useState("");
 
   // image handle function
   const imghandleSubmit2 = (e) => {
@@ -152,7 +152,7 @@ export function EditForm({ pro }) {
 
   // image file converted to string
   const onLoad2 = (fileString) => {
-    setImage2(fileString);
+    setImg2(fileString);
     setbase64code2 = fileString;
   };
 
@@ -167,11 +167,8 @@ export function EditForm({ pro }) {
 
   // state management
   const [name, setName] = useState(pro.name);
-  const [img, setImg] = useState(pro.img);
-  const [img1, setImg1] = useState(pro.img1);
-  const [img2, setImg2] = useState(pro.img2);
-  const [fit, setFit] = useState(pro.fit);
   const [desc, setDesc] = useState(pro.desc);
+  const [fit, setFit] = useState(pro.fit);
   const [price, setPrice] = useState(pro.price);
   const [rating, setRating] = useState(pro.rating);
   const [offer, setOffer] = useState(pro.offer);
@@ -190,6 +187,7 @@ export function EditForm({ pro }) {
       rating: rating,
       offer: offer,
     };
+  
     fetch(`${API_URL}/products/${pro._id}`, {
       method: "PUT",
       body: JSON.stringify(update),
@@ -242,15 +240,7 @@ export function EditForm({ pro }) {
                   className="mt-2 form-control rounded-pill "
                   type="file"
                   onChange={imghandleSubmit} />
-
-                {/* iamge link */}
-
-                <input
-                  className="mt-2 form-control rounded-pill"
-                  value={image}
-                  type="text"
-                  placeholder="Image"
-                  onChange={(event) => setImg(event.target.value)} /></li>
+                  </li>
 
               {/* end */}
               {/* ----------------------------------------------------------- */}
@@ -261,14 +251,6 @@ export function EditForm({ pro }) {
                   type="file"
                   onChange={imghandleSubmit1} />
 
-                {/* iamge link 1*/}
-
-                <input
-                  className="mt-2 form-control rounded-pill"
-                  value={image1}
-                  type="text"
-                  placeholder="Image"
-                  onChange={(event) => setImg1(event.target.value)} />
               </li>
               {/* ----------------------------------------------------------- */}
               <li className="mb-3">
@@ -279,14 +261,6 @@ export function EditForm({ pro }) {
                   type="file"
                   onChange={imghandleSubmit2} />
 
-                {/* iamge link 2*/}
-
-                <input
-                  className="mt-2 form-control rounded-pill"
-                  value={image2}
-                  type="text"
-                  placeholder="Image"
-                  onChange={(event) => setImg2(event.target.value)} />
               </li>
             </ul>
           </div>
