@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Admin from "../Admin/Admin";
 import img2 from "../images/cloth.png";
 
+
 export default function Navbar() {
 
   // user email address
@@ -143,16 +144,17 @@ export default function Navbar() {
                 <i 
                   className="fa fa-2x fa-shopping-bag text-danger"
                   aria-hidden="true"
-               
+                  
+                
                 ></i>
-
+                
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {quantity}{" "}
                   <span className="visually-hidden">unread messages</span>
                 </span>
               </Link>
             
-
+            
     </div>
   </div>
 </div>

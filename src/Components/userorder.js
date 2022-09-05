@@ -106,7 +106,7 @@ export default function MyOrders() {
                 
                   <div className="col-lg-4 col-md-6 mt-5 ">
                     <div
-                      className="card order hand border-0 shadow-lg rounded-4 cur mx-auto"
+                      className="card order cur border-0 shadow-lg rounded-4  mx-auto"
                       style={{ width: "18rem" }}
                       onClick={() => navigate("/MyOrderInfo/" + g._id)}
                     >

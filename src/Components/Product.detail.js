@@ -8,6 +8,7 @@ import { API_URL } from "../auth.service/auth.service";
 import InfoNav from "./InfoNav";
 
 
+
 export default function ProductDetail() {
   // auth service
   const authToken = window.localStorage.getItem("authToken");
@@ -61,6 +62,7 @@ export default function ProductDetail() {
     dispatch(addProduct({ ...list, price: list.price, quantity, size }));
   };
 
+  
   return (
     <div className="container-fluid">
       <InfoNav/>
@@ -181,6 +183,7 @@ export default function ProductDetail() {
             <p className="fw-bold">
               Fit: <span className="text-danger"> {list.fit}</span>
             </p>
+            
             <p className="fw-bolder">Product Details:-</p>
             <h6 className="mb-4">{list.desc}</h6>
 
@@ -238,9 +241,11 @@ export default function ProductDetail() {
 
               <button
                 className="btn btn-dark text-warning fw-bold mt-4"
+                
                 onClick={() => navigate("/cart")}
               >
                Go To Cart
+               
               </button>
             </div>
             {/* model trigger */}

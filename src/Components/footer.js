@@ -30,3 +30,31 @@ export default function Footer() {
     </div>
   );
 }
+
+{/* <input
+            className="mt-2 form-control"
+            value={userId}
+            type="text"
+            placeholder="userId"
+            onChange={(event) => setUserId(event.target.value)} />
+          
+          <input
+            className="mt-2 form-control"
+            value={token}
+            type="text"
+            placeholder="token"
+            onChange={(event) => setToken(event.target.value)} />
+          
+          <input
+            className="mt-2 form-control"
+            value={product}
+            type="text"
+            placeholder="Product"
+            onChange={(event) => setProduct(event.target.value)} />
+          
+          <input
+            className="mt-2 form-control"
+            value={total}
+            type="number"
+            placeholder="Total"
+            onChange={(event) => setTotal(event.target.value)} />  */}

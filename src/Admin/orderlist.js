@@ -410,33 +410,7 @@ export function EditOrderForm({ orders }) {
             alt=""
           />
 
-<input
-            className="mt-2 form-control"
-            value={userId}
-            type="text"
-            placeholder="userId"
-            onChange={(event) => setUserId(event.target.value)} />
-          {/* token */}
-          <input
-            className="mt-2 form-control"
-            value={token}
-            type="text"
-            placeholder="token"
-            onChange={(event) => setToken(event.target.value)} />
-          {/* product */}
-          <input
-            className="mt-2 form-control"
-            value={product}
-            type="text"
-            placeholder="Product"
-            onChange={(event) => setProduct(event.target.value)} />
-          {/* total */}
-          <input
-            className="mt-2 form-control"
-            value={total}
-            type="number"
-            placeholder="Total"
-            onChange={(event) => setTotal(event.target.value)} />
+ 
           {/* status */}
           <select
             className="mt-3 form-control  p-3"
