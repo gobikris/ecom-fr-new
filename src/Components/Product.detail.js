@@ -107,7 +107,7 @@ export default function ProductDetail() {
             aria-hidden="true"
             onClick={() => navigate("/shop")}
           ></i>
-          <div className="col-lg-5 col-md-12 col-12 mb-2">
+          <div className="col-lg-5 col-md-12 col-12 mb-2 ">
             {/* Carousel for img,img1,img2 */}
             <div
               id="carouselExampleControls"
